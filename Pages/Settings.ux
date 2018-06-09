@@ -1,0 +1,38 @@
+<Page  ux:Class="Pages.Settings">
+	<DockPanel>
+<TopBar ux:Name="topBar" Dock="Top"  Title="Settings" RightIcon="leftChevron" />
+<StackPanel Dock="Top" Margin="20" ItemSpacing="90" >
+
+	<StackPanel ItemSpacing="25" > 
+		<Panel>
+			<Text Alignment="Left" Value="Pomorodo Time" Font="Bold" FontSize="20" />
+			<Text Alignment="Right" Value="{PomodoroTimeNFormat}:00" Opacity="0.6" FontSize="20" />
+		</Panel>
+		<!-- <NativeViewHost>
+        	<Slider Value="{PomodoroTimeNFormat}"  Width="120" Minimum="1" Maximum="59" Background="White" />
+    	</NativeViewHost> -->
+	    <RangeBar Value="{PomodoroTimeNFormat}" />
+	</StackPanel>
+	<StackPanel ItemSpacing="30" > 
+		<Panel>
+			<Text Alignment="Left" Value="Short Breck" Font="Bold" FontSize="20" />
+			<Text Alignment="Right" Value="{ShortBreakTimeNFormat}:00" Opacity="0.6" FontSize="20" />
+		</Panel>
+	    <RangeBar Value="{ShortBreakTimeNFormat}" />
+	</StackPanel>
+	<StackPanel ItemSpacing="30" > 
+		<Panel>
+			<Text Alignment="Left" Value="Long Breck" Font="Bold" FontSize="20" />
+			<Text Alignment="Right" Value="{LongBreakTimeNFormat}:00" Opacity="0.6" FontSize="20" />
+		</Panel>
+	    <RangeBar Value="{LongBreakTimeNFormat}" />
+	</StackPanel>
+
+	<Rectangle Alignment="Right" Padding="10"  Width="50%" Height="60" Color="#0C1524" CornerRadius="50" >
+		<Text Value="Done" FontSize="20" Alignment="Center" Color="White" />
+		<Clicked Handler="{submitNewSettings}" />
+	</Rectangle>
+
+</StackPanel>
+</DockPanel>
+</Page>

@@ -1,0 +1,62 @@
+<Page ux:Class="Pages.Main">
+		<DockPanel>
+		<TopBar ux:Name="topBar" Dock="Top" Title="Timer" LeftIcon="settings" />
+
+		<TimerCircle Dock="Top"  ux:Name="TimerCircle" IconOpacity="0" Sectores="{circleSector}" PomodoroTime="{PomodoroTime}" ShortBreakTime="{ShortBreakTime}" LongBreakTime="{LongBreakTime}" />		
+		<StackPanel Dock="Bottom">
+			<Selection MinCount="1" MaxCount="1" Value="{type}" />
+				<Rectangle ux:Name="typeChooser" Margin="10,20" Height="60" StrokeColor="#E88E34" StrokeWidth="2" CornerRadius="5" >
+					<Grid Columns="1*,1*,1*">
+				<Chooser Label="Pomodoro"  />
+				<Chooser Label="Short Break" />
+				<Chooser Label="Long Break" />
+				</Grid>
+ 			</Rectangle>
+			<Rectangle ux:Name="StartButton"    Color="#f6d365"  Height="60" >
+				<Text Alignment="Center" FontSize="25" Value="Start" Color="White" />
+				<Clicked Handler="{StartTimer}" >
+					<!-- <Set StartTimerAnimation.Value="true" /> -->
+					<!-- <Set StopTimerAnimation.Value="false" /> -->
+				</Clicked>
+			</Rectangle>
+		</StackPanel>
+		
+
+
+		<PausePlayButton ux:Name="PausePlayButton" />
+		<Rectangle ux:Name="StopButton" Dock="Bottom"  Height="60"  Color="#fda085" >
+			<Text Alignment="Center" FontSize="25" Color="White" Value="Stop"/>
+			<Clicked Handler="{StopTimer}">
+				<!-- <Set StartTimerAnimation.Value="false" /> -->
+				<!-- <Set StopTimerAnimation.Value="true" /> -->
+			</Clicked>
+		</Rectangle>
+	
+		<WhileTrue ux:Name="StartTimerAnimation" Value="!{startingScreen}">
+			<Change StartButton.Opacity="0" Duration="0.2" DurationBack="0.2" />
+			<Change StartButton.Visibility="Collapsed" Duration="0.2" DurationBack="0.2" />
+			<Change typeChooser.Opacity="0" Duration="0.2" DurationBack="0.2" />
+			<Change typeChooser.Visibility="Collapsed" Duration="0.2" DurationBack="0.2" />
+			<Change TimerCircle.Sectores="0.001" Duration="0.4" DurationBack="0.4"  />
+			<Change TimerCircle.IconOpacity="1" Duration="0.4" DurationBack="0.4"  />
+		</WhileTrue>
+
+		<WhileTrue ux:Name="StopTimerAnimation " Value="{startingScreen}">
+			<Move Target="StopButton" Y="50" Duration="0.2" DurationBack="0.2" />
+			<Change PausePlayButton.Opacity="0" Duration="0.2" DurationBack="0.2" />
+			<Change PausePlayButton.Visibility="Collapsed" Duration="0.2" DurationBack="0.2" />
+			<Change StopButton.Opacity="0" Duration="0.2" DurationBack="0.2" />
+			<Change StopButton.Visibility="Collapsed" Duration="0.2" DurationBack="0.2"  />
+			<Change TimerCircle.Sectores="6.3" Duration="0.4" DurationBack="0.4"  />
+		</WhileTrue>
+		<WhileWindowLandscape>
+			<Change topBar.Visibility="Collapsed" />
+		</WhileWindowLandscape>
+
+
+	</DockPanel>
+	
+	<!-- <WhileTrue Value="{isStoped}">
+	<PlaySound File="alarmwatch.mp3" When="Start" Direction="Stop" Delay="4"  />
+</WhileTrue> -->
+</Page>

@@ -1,0 +1,19 @@
+<Panel ux:Class="RoundsChooserCircle">
+	<Circle ux:Name="circle3"  Margin="10" Width="70" Height="70" Color="White" >
+			<string ux:Property="Label" />
+			<Selectable Value="{Property Label}"  />
+			<DropShadow Color="#ccc" Distance="4" Size="10"  />
+			<Text ux:Name="circle3Text" Value="{Property Label}" Alignment="Center" FontSize="25" Color="#0C1524" />
+
+			<Tapped Handler="{setRounds}" >
+				<Scale Factor="1.1" Duration="0.1" DurationBack="0.1"   /> 
+				<ToggleSelection />
+			</Tapped> 
+			<WhileSelected>
+				<Scale Factor="1.1" Duration="0.1" DurationBack="0.1"  />
+				<Change circle3.Color="#0C1524"  Duration="0.1" DurationBack="0.1" />
+				<Change circle3Text.Color="White"  Duration="0.1" DurationBack="0.1"  />
+				<!-- <DataBinding Target="circle3Text.Value" Key="{rounds}" /> -->
+			</WhileSelected>
+		</Circle>
+</Panel>

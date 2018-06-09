@@ -1,0 +1,42 @@
+<Panel ux:Class="PausePlayButton">
+	
+	<JavaScript>
+		var Observable = require("FuseJS/Observable");
+		var isPaused = Observable(false);
+		//var isPlayed = Observable(true);
+		var count = 1;
+		function isPlayPauseButtonClicked () {
+			count++;
+			isPaused.value = true;
+		//	isPlayed.value = false;
+			if(count%2 == 1){
+				isPaused.value = false;
+		//		isPlayed.value = true;
+			}
+		}
+		module.exports = {
+			isPlayPauseButtonClicked:isPlayPauseButtonClicked,
+			isPaused:isPaused
+			//isPlayed:isPlayed
+		}
+	</JavaScript>
+	<Circle   Height="70"  Margin="0,10" Color="White" StrokeWidth="2" StrokeColor="#f6d365"  > 
+				<!-- <Text Alignment="Center" FontSize="24" Color="#0C1524" Value="Pase"/> -->
+				<Clicked Handler="{isPlayPauseButtonClicked}" />
+				<PauseIcon ux:Name="Pause" Alignment="Center" />
+				<PlayIcon ux:Name="Play" />
+			</Circle>
+
+			<WhileTrue ux:Name="PlayIconMove" Value="!{isPaused }" >
+			<Change Play.Opacity="0" Duration="0.2" DurationBack="0.2"  />
+			<Change Play.Visibility="Collapsed" Duration="0.2" DurationBack="0.2" />
+			<Callback Handler="{ResumeTimer}" />
+		</WhileTrue>
+		<WhileTrue ux:Name="PauseIconMove" Value="{isPaused }"  >
+			<Rotate Target="Pause" Degrees="90" Duration="0.3" DurationBack="0.2" Easing="BackOut" EasingBack="BackIn" />
+			<Change Pause.Opacity="0" Duration="0.2" DurationBack="0.2" />
+			<Change Pause.Visibility="Collapsed" Duration="0.2" DurationBack="0.2"  />
+			<Callback Handler="{PauseTiemr}" />
+		</WhileTrue>
+
+</Panel>

@@ -1,0 +1,20 @@
+<Panel ux:Class="Chooser">
+	<Rectangle ux:Name="choosingOne" >
+						<string ux:Property="Label" />
+						<Selectable Value="{Property Label}"  /> 
+						<Text ux:Name="choosingOneText" Font="Bold" Margin="10" FontSize="16" Alignment="Center" Value="{Property Label}" />
+						<Clicked  >
+							<ToggleSelection  />
+																
+										<!-- <PlaySound File="ding.mp3" When="Start" Direction="Stop" Delay="1" />						 -->
+						</Clicked>
+						<WhileSelected>
+						<Change choosingOne.Color="#E88E34" Duration="0.1" DurationBack="0.1" />
+						<Change choosingOneText.Color="White" Duration="0.1" DurationBack="0.1" />
+
+					</WhileSelected>
+	</Rectangle>
+
+
+
+</Panel>

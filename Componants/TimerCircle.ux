@@ -1,0 +1,33 @@
+<Panel ux:Class="TimerCircle" Width="100%" Height="60%">
+	<float4 ux:Property="Sectores" />
+	<string ux:Property="PomodoroTime" />
+	<string ux:Property="ShortBreakTime" />
+	<string ux:Property="LongBreakTime" />
+	<string ux:Property="IconOpacity" />
+				<Circle   Width="80%" Height="80%" Smoothness="2" StartAngleDegrees="-90" LengthAngle="{Property Sectores}">
+				<Stroke LineCap="Square" Width="20">
+					<LinearGradient Angle="45" > 
+						<GradientStop Offset="0" Color="#0C1524"   />
+						<GradientStop Offset="1" Color="#a18cd1"  />
+					</LinearGradient>
+				</Stroke>
+				<Circle ux:Name="circle2" Width="80%"  Height="80%" Color="White" ZOffset="2" >
+					<DropShadow Color="#ccc" Distance="3"  Size="20" />
+					<Match Value="{type}">
+						<Case String="Pomodoro">
+							<Text Value="{Property PomodoroTime}" Alignment="Center" Color="#0C1524" Opacity="0.6" FontSize="35" />
+						</Case>
+						<Case String="Short Break">
+							<Text Value="{Property ShortBreakTime}" Alignment="Center" Color="#0C1524" Opacity="0.6" FontSize="35" />
+						</Case>
+						<Case String="Long Break">
+							<Text Value="{Property LongBreakTime}" Alignment="Center" Color="#0C1524" Opacity="0.6" FontSize="35" />
+						</Case>
+						
+				</Match>
+					<Text Opacity="{Property IconOpacity}" Font="icon" Margin="40" Value="&#xE863;" FontSize="40" Alignment="BottomCenter" >
+						<Clicked Handler="{ResetTimer}" />
+					</Text>
+				</Circle>
+			</Circle>
+</Panel>

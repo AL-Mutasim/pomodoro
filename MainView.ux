@@ -1,0 +1,27 @@
+<App>
+	<Font File="Assets/OpenSans-Regular.ttf" ux:Global="OpenSans"/>
+	<Font File="Assets/MaterialIcons-Regular.ttf" ux:Global="icon"/>
+	<Font File="Assets/fontawesome-webfont.ttf" ux:Global="iconAawsom"/>
+	<Android.StatusBarConfig Color="#0003" IsVisible="True" />
+	<iOS.StatusBarConfig Style="Dark" Animation="Slide" IsVisible="True" />
+
+	<JavaScript File="Main.js"  />
+
+ 
+<Router ux:Name="router" />
+<Navigator DefaultPath="main">
+	<Pages.Main ux:Name="main" >
+		<Transition Direction="ToActive" StretchDuration="0.2">
+			<Move X="-1" RelativeTo="ParentSize" Duration="0.2"/>
+		</Transition>
+	</Pages.Main>
+	<Pages.Settings ux:Name="settings"  >
+		<Transition  Direction="ToInactive" StretchDuration="0.2">
+			<Move X="1"  RelativeTo="ParentSize" Duration="0.2"/>
+			
+		</Transition>
+	</Pages.Settings>
+</Navigator>
+
+
+</App>

@@ -7,6 +7,7 @@
 
 	<JavaScript File="Main.js"  />
 
+	<UserEvent ux:Name="PlaySoundEvent"/>
  
 <Router ux:Name="router" />
 <Navigator DefaultPath="main">

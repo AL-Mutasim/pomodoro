@@ -1,4 +1,7 @@
 <Page ux:Class="Pages.Main">
+	<OnUserEvent EventName="PlaySoundEvent">
+			<PlaySound File="{soundFile}" />
+	</OnUserEvent>
 		<DockPanel>
 		<TopBar ux:Name="topBar" Dock="Top" Title="Timer" LeftIcon="settings" />
 

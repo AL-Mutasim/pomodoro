@@ -8,6 +8,7 @@
     ],
   "Includes": [
     "*",
+    "Sounds/*.mp3:Bundle",
     "./*.js:Bundle"
   ]
 }

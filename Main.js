@@ -10,6 +10,9 @@ var LongBreakTime = Observable();
 var PomodoroTimeNFormat = Observable();
 var ShortBreakTimeNFormat = Observable();
 var LongBreakTimeNFormat = Observable();
+
+var soundFile = Observable();
+
 var startingScreen = Observable(true);
 var circleSector = Observable(6.3);
 var isRunning = false;
@@ -17,7 +20,7 @@ var isStoped = false;
 
 
 // if (DataStore.isExists || DataStore.read() == '') 
-	DataStore.store(JsonData(25,5,15));
+	DataStore.store(JsonData(25,0.1,15));
 
 
 console.log(DataStore.read());
@@ -165,11 +168,14 @@ var Timer = {
 		interval.clearAll();
 		updateFormatedTomatoData();
 
+
 /*			*******************************************************************************************
 			When the timer stopped i want to run sound.
 			I tried in ux but it dose't work
 */
-		
+	
+		soundFile.value="Sounds/alarmclock.mp3";	
+		PlaySoundEvent.raise();		
 
 	},
 
@@ -267,6 +273,7 @@ function submitNewSettings(){
 
 
 module.exports = {
+	soundFile,
 	PomodoroTime: PomodoroTime,
 	ShortBreakTime: ShortBreakTime,
 	LongBreakTime: LongBreakTime,
